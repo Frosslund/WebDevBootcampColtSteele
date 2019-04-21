@@ -1,0 +1,9 @@
+<% include partials/header %>
+
+<h1>This is the page of posts:</h1>
+
+<% for(var i= 0; i < posts.length; i++){%>
+    <li><%= posts[i].post %> by <%= posts[i].author %></li>
+<% } %>
+
+<% include partials/footer %>
