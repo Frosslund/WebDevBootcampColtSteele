@@ -1,13 +1,14 @@
-var express       = require("express"),
-    app           = express(),
-    bodyParser    = require("body-parser"),
-    mongoose      = require("mongoose"),
-    Campground    = require("./models/campground"),
-    Comment       = require("./models/comment"),
-    passport      = require("passport"),
-    LocalStrategy = require("passport-local"),
-    User          = require("./models/user"),
-    seedDB        = require("./seeds");
+var express          = require("express"),
+    app              = express(),
+    bodyParser       = require("body-parser"),
+    mongoose         = require("mongoose"),
+    Campground       = require("./models/campground"),
+    Comment          = require("./models/comment"),
+    passport         = require("passport"),
+    LocalStrategy    = require("passport-local"),
+    User             = require("./models/user"),
+    methodOverride   = require("method-override");
+    seedDB           = require("./seeds");
 
 //Requiring Routes    
 var campgroundRoutes = require("./routes/campgrounds"),
@@ -19,6 +20,7 @@ mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 // seedDB(); // seed the database
 
 // Passport Configuration
